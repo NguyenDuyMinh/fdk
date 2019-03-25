@@ -13,6 +13,7 @@
 	{% endblock %}
 </head>
 <body>
+	{% set session = session['username'] %}
 	<div class="container">
 		<section class="section-1">
 			<div class="menu-top">
@@ -26,14 +27,14 @@
 			</div>
 			<div class="btn-group nav-top" style="float: right; margin-top: 2px;">
 			    <button style="width: 160px; text-align: right" type="button" class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown">
-			        {% if username %}
-			        	{{ username }}
+			        {% if session %}
+			        	{{ session }}
 			        {% else %}
 						ログインしていません!
 					{% endif %}
 			    </button>
 			    <ul class="dropdown-menu" role="menu">
-			    	{% if username %}
+			    	{% if session %}
 			        <li><a href="{{ url_for('.logout') }}">ログアウト</a></li>
 			        {% else %}
 			        <li><a href="{{ url_for('.login') }}">ログイン</a></li>

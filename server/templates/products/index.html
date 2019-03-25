@@ -1,0 +1,45 @@
+{% extends "layout.html"-%}
+{% block page_body %}
+<!-- Modal お知らせ -->
+<div class="products" id="myModal" role="dialog">
+	<div class="modal-dialog">
+	<!-- Modal content-->
+	  	<div class="modal-content">
+		    <div class="modal-header">
+		    	<h4 class="modal-title col-md-11">お知らせ</h4>
+		    </div>
+		    <div class="modal-body">
+
+				<form action="{{ type_form }}" method="POST" role="form" id="form-pro">
+					{{ form.proId(class='')}}
+					<div class="col-md-6 left-box">
+		                <div class="form-group">
+		                	{{ form.name(class='pro form-control', placeholder='物件名 *') }}
+		                </div>
+		                <div class="form-group">
+		                	{{ form.price(class='pro form-control', placeholder='価格 *') }}   
+		                </div>
+		                <div class="form-group">
+		                	{{ form.type(class='pro form-control', placeholder='タイプ *') }}
+		                </div>
+		                <div class="form-group">
+		                	{{ form.description(class='pro form-control', placeholder='説明する *') }}
+		                </div>
+		            </div>
+		            <div class="col-md-6">
+		            	<div class="form-group">
+				        	<p>ホームページ *</p> 
+				      	</div>
+				      	<div class="form-group">
+				      		<input type="file" name="img" required>
+				      	</div>
+		            </div>
+		            <div class="col-md-12 bottom-box">
+		            	<button type="submit" form="form-pro" class="btn btn-info center">新しい商品を作る</button>
+		            </div>
+	            </form>
+		    </div>
+	  	</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,294 @@
+{% extends "layout.html"-%}
+{% block head_block %}
+<style type="text/css">
+	section {
+		padding-top: 20px;
+	}
+	/*Section 2*/
+	section .panel-heading {
+		background-color: #F0E68C; 
+		height: 70px;
+	}
+	section .create_bnt {
+		margin-top: 31px !important;
+	}
+	section .create_bnt a {
+		color: #8B0000;
+	}
+	section #collapse1 img {
+		max-width: 50px;
+	}
+	section #collapse1 a {
+		padding-left: 10px;
+	}
+	/*Modal お知らせ*/
+	#myModal .modal-dialog {
+		max-width: 1000px !important; 
+		width: 800px !important;
+	}
+	#myModal .modal-dialog .modal-content .modal-header button {
+		margin-top: -13px !important;
+	}
+	#myModal .modal-body .pro {
+		width: 253px;
+	}
+	#myModal .modal-body .left-box{
+		border-right: double;
+	}
+	#myModal .modal-body .bottom-box .center {
+	    margin: 12px 0px 0px 300px;
+	}
+</style>
+{% endblock %}
+{% block page_body %}
+<!-- お知らせ -->
+<section>
+	<div class="panel-heading">
+		<div class="col-md-3">
+			<h2><a data-toggle="collapse" data-parent="#accordion" href="#collapse1">お知らせ</a></h2>
+		</div>
+        <h5 class="col-md-9 create_bnt">
+        	<a href="{{ url_for('.create') }}">新しい商品を作る</a>
+       	</h5>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse in">
+		<table class="table">
+			<thead>
+			  <tr class="active">
+			  	<th>ホームページ</th>
+			    <th>物件名</th>
+			    <th>価格</th>
+			    <th>タイプ</th>
+			    <th>説明</th>
+			    <th>編集する</th>
+			  </tr>
+			</thead>
+			<tbody>
+				{% for pro in context[0] %}
+			  	<tr class="info">
+			  		<td><img src="{{ url_for('static', filename='images/') }}{{ pro.image }}"></td>
+			  		<td><a href="#" data-toggle="modal" data-target="#myModal">{{ pro.name }}</a></td>
+			    	<td>{{ pro.price }} VND</td>
+			    	<td>{{ pro.type }}</td>
+			    	<td>{{ pro.description[:30] }} ...</td>
+			    	<td>
+			    		<a href="{{ url_for('.edit', pro_id=pro._id) }}"><span class="glyphicon glyphicon-edit"></span></a>
+			    		<a href="{{ url_for('.remove', pro_id=pro._id) }}"><span class="glyphicon glyphicon-remove"></span></a>
+			    	</td>
+			  	</tr> 
+			  	{% endfor %} 
+			</tbody>
+		</table>
+	</div>
+</section>
+<!-- 管理アカウント -->
+<section>
+	<div class="panel-heading" style="background-color: #F0E68C; height: 70px;">
+        <div class="col-md-3">
+			<h2><a data-toggle="collapse" data-parent="#accordion" href="#collapse2">管理アカウント</a></h2>
+		</div>
+        <h5 class="col-md-9 create_bnt" style="margin-top: 31px !important;">
+        	<a href="#" style="color: #8B0000;">新しい商品を作る</a>
+       	</h5>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse in">
+		<table class="table">
+		<thead>
+		  <tr>
+		    <th>Firstname</th>
+		    <th>Lastname</th>
+		    <th>Email</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+		    <td>Default</td>
+		    <td>Defaultson</td>
+		    <td>def@somemail.com</td>
+		  </tr>      
+		  <tr class="success">
+		    <td>Success</td>
+		    <td>Doe</td>
+		    <td>john@example.com</td>
+		  </tr>
+		  <tr class="danger">
+		    <td>Danger</td>
+		    <td>Moe</td>
+		    <td>mary@example.com</td>
+		  </tr>
+		  <tr class="info">
+		    <td>Info</td>
+		    <td>Dooley</td>
+		    <td>july@example.com</td>
+		  </tr>
+		  <tr class="warning">
+		    <td>Warning</td>
+		    <td>Refs</td>
+		    <td>bo@example.com</td>
+		  </tr>
+		  <tr class="active">
+		    <td>Active</td>
+		    <td>Activeson</td>
+		    <td>act@example.com</td>
+		  </tr>
+		</tbody>
+		</table>
+	</div>
+</section>
+<!-- 企業 -->
+<section>
+	<div class="panel-heading" style="background-color: #F0E68C; height: 70px;">
+        <div class="col-md-3">
+			<h2><a data-toggle="collapse" data-parent="#accordion" href="#collapse3">企業</a></h2>
+		</div>
+        <h5 class="col-md-9 create_bnt" style="margin-top: 31px !important;">
+        	<a href="#" style="color: #8B0000;">新しい商品を作る</a>
+       	</h5>
+    </div>
+    <div id="collapse3" class="panel-collapse collapse in">
+		<table class="table">
+			<thead>
+			  <tr>
+			    <th>Firstname</th>
+			    <th>Lastname</th>
+			    <th>Email</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+			    <td>Default</td>
+			    <td>Defaultson</td>
+			    <td>def@somemail.com</td>
+			  </tr>      
+			  <tr class="success">
+			    <td>Success</td>
+			    <td>Doe</td>
+			    <td>john@example.com</td>
+			  </tr>
+			  <tr class="danger">
+			    <td>Danger</td>
+			    <td>Moe</td>
+			    <td>mary@example.com</td>
+			  </tr>
+			  <tr class="info">
+			    <td>Info</td>
+			    <td>Dooley</td>
+			    <td>july@example.com</td>
+			  </tr>
+			  <tr class="warning">
+			    <td>Warning</td>
+			    <td>Refs</td>
+			    <td>bo@example.com</td>
+			  </tr>
+			  <tr class="active">
+			    <td>Active</td>
+			    <td>Activeson</td>
+			    <td>act@example.com</td>
+			  </tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+<!-- 物件検索 -->
+<section>
+	<div class="panel-heading" style="background-color: #F0E68C; height: 70px;">
+        <div class="col-md-3">
+			<h2><a data-toggle="collapse" data-parent="#accordion" href="#collapse4">物件検索</a></h2>
+		</div>
+        <h5 class="col-md-9 create_bnt" style="margin-top: 31px !important;">
+        	<a href="#" style="color: #8B0000;">新しい商品を作る</a>
+       	</h5>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse in">
+		<table class="table">
+			<thead>
+			  <tr>
+			    <th>Firstname</th>
+			    <th>Lastname</th>
+			    <th>Email</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+			    <td>Default</td>
+			    <td>Defaultson</td>
+			    <td>def@somemail.com</td>
+			  </tr>      
+			  <tr class="success">
+			    <td>Success</td>
+			    <td>Doe</td>
+			    <td>john@example.com</td>
+			  </tr>
+			  <tr class="danger">
+			    <td>Danger</td>
+			    <td>Moe</td>
+			    <td>mary@example.com</td>
+			  </tr>
+			  <tr class="info">
+			    <td>Info</td>
+			    <td>Dooley</td>
+			    <td>july@example.com</td>
+			  </tr>
+			  <tr class="warning">
+			    <td>Warning</td>
+			    <td>Refs</td>
+			    <td>bo@example.com</td>
+			  </tr>
+			  <tr class="active">
+			    <td>Active</td>
+			    <td>Activeson</td>
+			    <td>act@example.com</td>
+			  </tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+<!-- Modal お知らせ -->
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+	<!-- Modal content-->
+	  	<div class="modal-content">
+		    <div class="modal-header">
+		    	<h4 class="modal-title col-md-11">情報</h4>
+		      	<button type="button" class="close col-md-1" data-dismiss="modal" >&times;</button>
+		    </div>
+		    <div class="modal-body">
+				<div class="col-md-6 left-box">
+	                <div class="form-group">
+	                	<row>
+		                	<label class="col-md-3">物件名 :</label>
+		                	<p class="col-md-9">Sake Daiginjo Goldmedal 720ml</p>   
+		                </row>  
+	                </div>
+	                <div class="form-group">
+	                	<row>
+		                	<label class="col-md-3">価格 :</label>
+		                	<p class="col-md-9">3,800,000 VND</p>   
+		                </row>                      
+	                </div>
+	                <div class="form-group">
+	                	<row>
+		                	<label class="col-md-3">タイプ :</label>
+		                	<p class="col-md-9">Sake</p>   
+		                </row>                      
+	                </div>
+	                <div class="form-group">
+	                	<row>
+		                	<label class="col-md-3">説明 :</label>
+		                	<p class="col-md-9">Sake Daiginjo Goldmedal Sake Daiginjo Goldmedal Sake Daiginjo Goldmedal Sake Daiginjo Goldmedal Sake Daiginjo Goldmedal</p>   
+		                </row>  	                    
+	                </div>
+	            </div>
+	            <div class="col-md-6">
+	            	<div class="form-group">
+			        	<p>ホームページ </p> 
+			      	</div>
+			      	<div class="form-group">
+			      		<img style="width: 150px;" src="{{ url_for('static', filename='images/Goldmedal.jpg') }}">
+			      	</div>
+	            </div>
+		    </div>
+	  	</div>
+	</div>
+</div>
+{% endblock %}

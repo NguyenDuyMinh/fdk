@@ -13,7 +13,8 @@
 	{% endblock %}
 </head>
 <body>
-	{% set session = session['username'] %}
+	{% set username = session['username'] %}
+	{% set role = session['role'] %}
 	<div class="container">
 		<section class="section-1">
 			<div class="menu-top">
@@ -27,18 +28,20 @@
 			</div>
 			<div class="btn-group nav-top" style="float: right; margin-top: 2px;">
 			    <button style="width: 160px; text-align: right" type="button" class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown">
-			        {% if session %}
-			        	{{ session }}
+			        {% if username %}
+			        	{{ username }}
 			        {% else %}
 						ログインしていません!
 					{% endif %}
 			    </button>
 			    <ul class="dropdown-menu" role="menu">
-			    	{% if session %}
+			    	{% if username and role == 1 %}
+			        <li><a href="{{ url_for('.logout') }}">ログアウト</a></li>
+			        <li><a href="{{ url_for('.register') }}">登録する</a></li>
+			        {% elif username %}
 			        <li><a href="{{ url_for('.logout') }}">ログアウト</a></li>
 			        {% else %}
 			        <li><a href="{{ url_for('.login') }}">ログイン</a></li>
-			        <li><a href="{{ url_for('.register') }}">登録する</a></li>
 			        {% endif %}
 			    </ul>
 			</div>

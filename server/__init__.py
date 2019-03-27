@@ -39,11 +39,11 @@ def create_app(test_config=None):
             password = request.form['password']
             admin = Admin.query.filter_by(email=email, password=password).first()
             if admin:
-                username = admin.username
-                session['username'] = username
+                session['username'] = admin.username
+                session['role'] = admin.role
                 return redirect(url_for('.dashboard'))
             raise(u'hure')
-        return render_template('admin/login.html', form=form)
+        return render_template('admin/auth/login.html', form=form)
         
     # register
     @app.route('/register', methods=['GET', 'POST'])
@@ -54,18 +54,24 @@ def create_app(test_config=None):
             username = request.form['username']
             email = request.form['email']
             password = request.form['password']
-            admin = Admin(username, email, password)
+            role = request.form['role']
+            admin = Admin(username, email, password, role)
             if admin:
-                db.session.add(admin)
-                db.session.commit()
-                session['username'] = username
-                return render_template('dashboard.html')
-        return render_template('admin/register.html', form=form)
+                try:
+                    db.session.add(admin)
+                    db.session.commit()
+                    session['username'] = username
+                    session['role'] = role
+                    return redirect(url_for('.dashboard'))
+                except:
+                    raise(404)
+        return render_template('admin/auth/register.html', form=form)
 
     # register
     @app.route('/logout', methods=['GET', 'POST'])
     def logout():
         session.pop('username', None)
+        session.pop('role', None)
         return redirect(url_for('login'))
 
     @app.route('/dashboard', methods=['GET', 'POST '])
@@ -77,7 +83,7 @@ def create_app(test_config=None):
 
         if 'username' in session:
             username = session['username']
-            return render_template('dashboard.html', context=context)   
+            return render_template('admin/dashboard.html', context=context)   
         return redirect(url_for('.login'))
 
     # create product
@@ -98,7 +104,7 @@ def create_app(test_config=None):
             except:
                print("Can not create")
         form = ProductForm(request.values)
-        return render_template('products/index.html', form=form, type_form=type_form)
+        return render_template('admin/products/index.html', form=form, type_form=type_form)
 
     # edit product
     @app.route('/edit', methods=['GET', 'POST'])
@@ -122,7 +128,7 @@ def create_app(test_config=None):
         if not request.values:
             return redirect(url_for('.dashboard'))
         form = ProductForm(request.values)
-        return render_template('products/index.html', form=form, type_form=type_form)
+        return render_template('admin/products/index.html', form=form, type_form=type_form)
 
     # remove product
     @app.route('/remove', methods=['GET'])
@@ -135,10 +141,9 @@ def create_app(test_config=None):
         except:
             print("Can not remove")
 
-    # detail product
-    @app.route('/info', methods=['GET'])
-    def info():
-        form = ProductForm(request.values)
-        return render_template('products/info.html', form=form) 
+    # home
+    @app.route('/home', methods=['GET'])
+    def home():
+        return render_template('site/index.html') 
         
     return app

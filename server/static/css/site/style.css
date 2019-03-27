@@ -1,0 +1,93 @@
+.container {
+	background-color: #DCDCDC;
+}
+/*navigation*/
+.container .nav-top {
+	min-height: 90px;
+    background-color: #B0C4DE;
+}
+ul.nav-header {
+	padding-left: 0px;
+}
+ul.nav-header li {
+    display: inline-block;
+    position: relative;
+    padding-right: 20px;
+}
+ul.nav-header li a {
+    color: #fff;
+}
+/*phone contact*/
+.nav-top .numberphone-top span {
+	font-size: 20px;
+}
+/*slider*/
+h2 {
+	color: #778899;
+}
+section {
+	padding-top: 20px;
+}
+#carouselExampleIndicators{
+	min-width: 100%;
+}
+#carouselExampleIndicators .carousel-inner .carousel-item .w-100 {
+	max-height: 400px;
+}
+#slider-pro .carousel-inner .carousel-item {
+	border-style: ridge;
+	border-width: 2px 5px 2px 5px;
+	border-color: #5F9EA0;
+}
+#slider-pro {
+	margin-left: 15px;
+}
+#slider-pro .carousel-inner .carousel-item .img-pro {
+	float: left;
+	max-height: 200px;
+	max-width: 217px;
+	padding:0px 2px 0px 2px;
+}
+#slider-pro .carousel-inner .carousel-item .w-101 {
+	max-width: 100%;
+	max-height: 100%;
+}
+.category-pro {
+	min-height: 500px;
+}
+.new-pro .content-pro img {
+	max-width: 100%;
+}
+.hot-pro .content-pro img {
+	max-width: 100%;
+}
+.appreciate-pro  .content-pro img {
+	max-width: 100%;
+}
+/*footer*/
+footer .footer-top {
+	background-color: #009c95;
+}
+footer .footer-top .text-center p span {
+    color: #fff;
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+    top: 3px;
+}
+ul.menu-footer li {
+    display: inline-block;
+    position: relative;
+}
+ul.menu-footer li a {
+    color: #fff;
+    padding: 0 10px;
+}
+.copyright {
+    margin-top: 20px;
+    font-size: 12px;
+}
+.img_penguins {
+    float: right;
+    display: block;
+}

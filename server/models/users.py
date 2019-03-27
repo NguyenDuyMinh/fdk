@@ -9,11 +9,13 @@ class Admin(db.Model):
     username = db.Column(db.String(80))
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(120), unique=True)
+    role = db.Column(db.Integer)
 
-    def __init__(self, username, email, password):
+    def __init__(self, username, email, password, role):
         self.username = username
         self.email = email
         self.password = password
+        self.role = role
 
     def __repr__(self):
         return '<User %r>' % self.username

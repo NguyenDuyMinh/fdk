@@ -1,4 +1,4 @@
-{% extends "layout.html"-%}
+{% extends "admin/layout.html"-%}
 {% block head_block %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
 {% endblock %}
@@ -19,6 +19,12 @@
                 </div>
                 <div class="form-group">
                     {{ form.password(class="form-control", placeholder="パスワード *") }}
+                </div>
+                <div class="form-group">
+                    <div style="margin-right: 240px;">
+                        <label style="padding-right: 5px;">{{ form.role.label }}</label>
+                        {{ form.role(class='', value='true') }}
+                    </div>
                 </div>
                 <div class="form-group">
                     {{ form.submit(class='btnSubmit', value='上記の内容で会員登録する') }}

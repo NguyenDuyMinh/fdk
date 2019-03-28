@@ -5,6 +5,14 @@
 .container .nav-top {
 	min-height: 90px;
     background-color: #B0C4DE;
+    padding-top: 15px;
+    max-width: 1140px;
+}
+#navbar {
+  position: fixed;
+  width: 1140px;
+  transition: top 0.3s;
+  top: -20px;
 }
 ul.nav-header {
 	padding-left: 0px;
@@ -15,11 +23,22 @@ ul.nav-header li {
     padding-right: 20px;
 }
 ul.nav-header li a {
-    color: #fff;
+    color: #009c95;
 }
 /*phone contact*/
-.nav-top .numberphone-top span {
-	font-size: 20px;
+
+.nav-top .numberphone-top .nav-link {
+	padding-left: 65px;
+	margin-top: -10px;
+} 
+.nav-top .numberphone-top .phone-img {
+	padding-left: 52px;
+    padding-bottom: 1px;
+    color: #2F4F4F;
+}
+.nav-top .numberphone-top .phone-number {
+	color: #2F4F4F;
+	font-size: 24px;
 }
 /*slider*/
 h2 {
@@ -28,19 +47,69 @@ h2 {
 section {
 	padding-top: 20px;
 }
+.slider-master {
+	padding-top: 120px;
+}
+.slider-master .carousel-inner .carousel-item .caption {
+  position: absolute;
+  top: 280px;
+  left: 330px;
+}
+.slider-master .carousel-inner .carousel-item .caption .caption-title {
+  font-size: 30px;
+  color: #2F4F4F;
+  font-weight: bold;
+}
+.slider-master .carousel-inner .carousel-item .caption .caption-desc {
+  margin-left: 140px;
+  color: #2F4F4F;
+}
 #carouselExampleIndicators{
 	min-width: 100%;
 }
+#carouselExampleIndicators .carousel-indicators .dot {
+	cursor: pointer;
+  	height: 15px;
+  	width: 15px;
+  	margin: 0 5px;
+  	border-radius: 50%;
+  	display: inline-block;
+  	transition: background-color 0.6s ease;
+}
+#carouselExampleIndicators .carousel-indicators .dot:hover {
+	cursor: pointer;
+  	height: 15px;
+  	width: 15px;
+  	margin: 0 5px;
+  	background-color: #009c95;
+  	border-radius: 50%;
+  	display: inline-block;
+  	transition: background-color 0.6s ease;
+}
+#carouselExampleIndicators a .carousel-control-prev-icon:hover {
+	background-color: #808080;
+	height: 50px !important;
+	width: 30px !important;
+}
+#carouselExampleIndicators a .carousel-control-next-icon:hover {
+	background-color: #808080;
+	height: 50px !important;
+	width: 30px !important;
+}
+#carouselExampleIndicators .carousel-indicators .active {
+	background-color: #009c95;
+}
 #carouselExampleIndicators .carousel-inner .carousel-item .w-100 {
 	max-height: 400px;
+}
+/*hot product*/
+#slider-pro {
+	margin-left: 15px;
 }
 #slider-pro .carousel-inner .carousel-item {
 	border-style: ridge;
 	border-width: 2px 5px 2px 5px;
 	border-color: #5F9EA0;
-}
-#slider-pro {
-	margin-left: 15px;
 }
 #slider-pro .carousel-inner .carousel-item .img-pro {
 	float: left;
@@ -48,9 +117,28 @@ section {
 	max-width: 217px;
 	padding:0px 2px 0px 2px;
 }
+#slider-pro .carousel-inner .carousel-item .img-pro .slider-pro-info {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+}
 #slider-pro .carousel-inner .carousel-item .w-101 {
 	max-width: 100%;
 	max-height: 100%;
+}
+#slider-pro .carousel-inner .carousel-item .img-pro .slider-pro-info .pro-name {
+  color: #00008B;
+  font-weight: bold;
+  font-size: 18px;
+}
+#slider-pro .carousel-inner .carousel-item .img-pro .slider-pro-info .pro-price {
+  font-size: 12px;
+}
+#slider-pro .carousel-inner .carousel-item .img-pro img:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  overflow: hidden;
 }
 .category-pro {
 	min-height: 500px;

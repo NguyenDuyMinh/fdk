@@ -1,21 +1,33 @@
 {% extends "site/layout.html"-%}
 {% block body %}
-<section>
+<section class="slider-master">
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 	  <ol class="carousel-indicators">
-	    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-	    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-	    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+	    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="dot active"></li>
+	    <li data-target="#carouselExampleIndicators" data-slide-to="1" class="dot"></li>
+	    <li data-target="#carouselExampleIndicators" data-slide-to="2" class="dot"></li>
 	  </ol>
 	  <div class="carousel-inner">
 	    <div class="carousel-item active">
 	      <img class="d-block w-100" src="{{ url_for('static', filename='images/site/slider/slider-1.jpg') }}" alt="First slide">
+	      <div class="caption">
+	      	<div class="caption-title">まるでその場にいるような物件見学へ</div>
+	      	<div class="caption-desc">気になる物件をVR見学！</div>
+	  	  </div>
 	    </div>
 	    <div class="carousel-item">
 	      <img class="d-block w-100" src="{{ url_for('static', filename='images/site/slider/slider-2.jpg') }}" alt="Second slide">
+	      <div class="caption">
+	      	<div class="caption-title">まるでその場にいるような物件見学へ</div>
+	      	<div class="caption-desc">気になる物件をVR見学！</div>
+	  	  </div>
 	    </div>
 	    <div class="carousel-item">
 	      <img class="d-block w-100" src="{{ url_for('static', filename='images/site/slider/slider-3.jpg') }}" alt="Third slide">
+	      <div class="caption">
+	      	<div class="caption-title">まるでその場にいるような物件見学へ</div>
+	      	<div class="caption-desc">気になる物件をVR見学！</div>
+	  	  </div>
 	    </div>
 	  </div>
 	  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -33,42 +45,35 @@
 		<h2>スライダーホット製品</h2>
 	</div>
 	<div id="slider-pro" class="carousel slide" data-ride="carousel">	  
-	  <div class="carousel-inner">
-	    <div class="carousel-item active">
-	    	<div class="img-pro">
-	    		<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-1.jpeg') }}" alt="First slide">
-	    	</div>
-	    	<div class="img-pro">
-	    		<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-2.jpeg') }}" alt="First slide">
-	    	</div>
-	    	<div class="img-pro">
-	    		<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-1.jpeg') }}" alt="First slide">
-	    	</div>
-	    	<div class="img-pro">
-	    		<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-2.jpeg') }}" alt="First slide">
-	    	</div>
-	    	<div class="img-pro">
-	    		<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-1.jpeg') }}" alt="First slide">
-	    	</div>
-	    </div>
-	    <div class="carousel-item">
-	      	<div class="img-pro">
-	    		<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-1.jpeg') }}" alt="First slide">
-	    	</div>
-	    	<div class="img-pro">
-	    		<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-2.jpeg') }}" alt="First slide">
-	    	</div>
-	    	<div class="img-pro">
-	    		<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-1.jpeg') }}" alt="First slide">
-	    	</div>
-	    	<div class="img-pro">
-	    		<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-2.jpeg') }}" alt="First slide">
-	    	</div>
-	    	<div class="img-pro">
-	    		<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-1.jpeg') }}" alt="First slide">
-	    	</div>
-	    </div>
-	  </div>
+	  	<div class="carousel-inner">
+		    <div class="carousel-item active" id="scroller">
+		    	<div class="img-pro">
+		    		<a href="#">
+		    			<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-1.jpeg') }}" alt="First slide">
+		    		</a>
+		    	</div>
+		    	<div class="img-pro">
+		    		<a href="">
+		    			<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-2.jpeg') }}" alt="First slide">
+		    		</a>
+		    	</div>
+		    	<div class="img-pro">
+		    		<a href="">
+		    			<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-1.jpeg') }}" alt="First slide">
+		    		</a>
+		    	</div>
+		    	<div class="img-pro">
+		    		<a href="">
+		    			<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-2.jpeg') }}" alt="First slide">
+		    		</a>
+		    	</div>
+		    	<div class="img-pro">
+		    		<a href="">
+		    			<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-1.jpeg') }}" alt="First slide">
+		    		</a>
+		    	</div>
+		    </div>
+		</div>
 	</div>
 </section>
 <section>

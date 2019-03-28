@@ -12,37 +12,38 @@
     {% block head %}
     {% endblock %}
     <title> | 物件探して、デザインして、リノベしよう｜クロニクル</title>
-    </style>
   </head>
   <body>
     <div class="container h-100">
-        <section class="nav-top row">
-            <div class="navigation col-md-6">
-                <ul class="nav-header">
-                    <li><a href="{{ url_for('.home') }}"><img width="200px" src="{{ url_for('static', filename='images/site/logo.svg') }}"></a></li>
-                    <li><a href="{{ url_for('.home') }}">ホーム</a></li>
-                    <li><a href="#">紹介</a></li>
-                    <li><a href="#">製品</a></li>
-                    <li><a href="#">役職</a></li>
-                    <li><a href="#">お知らせ</a></li>
-                </ul>
-            </div>
-            <div class="serch-top col-md-3">
-                <div class="searchbar">
-                    <input class="search_input" type="text" name="" placeholder="検索する...">
-                    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-                </div>                
-            </div>
-            <div class="numberphone-top col-md-3">
-                <a class="nav-link" href="tel:0120602423">
-                    <span>
-                        <img src="{{ url_for('static', filename='images/site/i_phone.svg') }}" width="50px" alt="" class="img-fluid"> 
-                    </span>
-                    <span class="phone_number">0120-602-423</span></a>
-            </div>
-        </section>
         {% block body %}
         {% endblock %}
+        <section id="navbar">
+            <div class="row nav-top">
+                <div class="navigation col-md-6">
+                    <ul class="nav-header">
+                        <li><a href="{{ url_for('.home') }}"><img width="200px" src="{{ url_for('static', filename='images/site/logo.svg') }}"></a></li>
+                        <li><a href="{{ url_for('.home') }}">ホーム</a></li>
+                        <li><a href="#">紹介</a></li>
+                        <li><a href="#">製品</a></li>
+                        <li><a href="#">役職</a></li>
+                        <li><a href="#">お知らせ</a></li>
+                    </ul>
+                </div>
+                <div class="serch-top col-md-3">
+                    <div class="searchbar">
+                        <input class="search_input" type="text" name="" placeholder="検索する...">
+                        <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                    </div>                
+                </div>
+                <div class="numberphone-top col-md-3">
+                    <a class="nav-link" href="tel:0120602423">
+                        <div class="phone-img">
+                            <img src="{{ url_for('static', filename='images/site/i_phone.svg') }}" width="50px" alt="" class="img-fluid"> 
+                        </div>
+                        <div class="phone-number">0120-602-423</div></a>
+                </div>
+            </div>
+        </section>
         <footer>
             <div class="row footer-top">
                 <div class="col col-12 col-sm-12 text-center">
@@ -78,5 +79,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="{{ url_for('static', filename='js/site/scroll.js') }}"></script>
   </body>
 </html>

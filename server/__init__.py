@@ -6,6 +6,8 @@ from server.models.users import Admin
 from server.models import database
 import os
 from bson import ObjectId
+import datetime
+import dateutil.parser as dp
 
 def create_app(test_config=None):
     # create and configure the app
@@ -42,7 +44,8 @@ def create_app(test_config=None):
                 session['username'] = admin.username
                 session['role'] = admin.role
                 return redirect(url_for('.dashboard'))
-            raise(u'hure')
+            message = u'ログインできません。'
+            return render_template('admin/auth/login.html', form=form, message=message)
         return render_template('admin/auth/login.html', form=form)
         
     # register
@@ -64,7 +67,8 @@ def create_app(test_config=None):
                     session['role'] = role
                     return redirect(url_for('.dashboard'))
                 except:
-                    raise(404)
+                    message = u'登録できません。'
+                    return render_template('admin/auth/register.html', form=form, message=message)
         return render_template('admin/auth/register.html', form=form)
 
     # register
@@ -77,7 +81,7 @@ def create_app(test_config=None):
     @app.route('/dashboard', methods=['GET', 'POST '])
     def dashboard():
         context = []
-        pros = mongodb.products.find({})    
+        pros = mongodb.products.find({})   
         if pros:
             context.append(pros)
 
@@ -91,12 +95,14 @@ def create_app(test_config=None):
     def create():
         type_form = '/create'
         if request.method == 'POST':
+            current_date = datetime.datetime.now()
             fields = {
                 'name': request.form['name'], 
                 'price': request.form['price'], 
                 'type': request.form['type'],
                 'description': request.form['description'],
-                'image': request.form['img']
+                'image': request.form['img'],
+                'date_created': current_date
             }
             try:
                mongodb.products.insert_one(fields);
@@ -144,6 +150,37 @@ def create_app(test_config=None):
     # home
     @app.route('/home', methods=['GET'])
     def home():
-        return render_template('site/index.html') 
+        context = {}
+        today = datetime.datetime.now()
+        parsed_t = dp.parse(str(today))
+        current_date = parsed_t.isoformat()
+        seven_date_before = today - datetime.timedelta(days=7)
+        parsed_t = dp.parse(str(seven_date_before))
+        week_ago = parsed_t.isoformat()
+        # {'date_created': {"$lte": arg}}
+        pros_new = mongodb.products.find()
+        if pros_new:
+            context['pros_new'] = pros_new
+
+        return render_template('site/index.html', context=context) 
+
+    # introducation
+    @app.route('/introducation', methods=['GET'])
+    def introducation():
+        return render_template('site/introducation.html')
+
+    # product
+    @app.route('/product', methods=['GET'])
+    def product():
+        return render_template('site/product.html')
         
+    # product
+    @app.route('/contact', methods=['GET'])
+    def contact():
+        return render_template('site/contact.html')
+
+    # product
+    @app.route('/notice', methods=['GET'])
+    def notice():
+        return render_template('site/notice.html')
     return app

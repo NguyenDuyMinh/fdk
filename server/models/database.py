@@ -13,8 +13,7 @@ def get_config_sql():
 
 def get_config_mongo():
     myclient = pymongo.MongoClient("mongodb://127.0.0.1:27017")
-    mydb = myclient["fdk-dev"]
-    mycol = mydb["estates_baibai"]
-    return mycol
+    mydb = myclient["fdk"]
+    return mydb
     # xs = mycol.find(myquery, myresult).limit(3)
     # return CursorWrapper(SaleEstateWidget, xs)

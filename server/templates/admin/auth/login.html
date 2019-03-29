@@ -8,6 +8,9 @@
         <div class="col-md-3"></div>
         <div class="col-md-6 login-form-1">
             <h3>ログイン</h3>
+            {% if message %}
+            <p>{{ message }}</p>
+            {%-endif %}
             <form action="{{ url_for('.login') }}" method="POST" role="form">
                 <div class="form-group">
                     {{ form.email(class="form-control", placeholder="メール *") }}

@@ -80,26 +80,14 @@
 	<div class="new-pro">
 		<h2>最新の</h2>
 		<div class="content-pro row">
+			{% for pro_new in context['pros_new'] %}
+				{{ pro_new }}
 			<div class="detail-pro col-md-3">
 				<img src="{{ url_for('static', filename='images/site/noithat.jpeg') }}">
-				<p>神奈川県川崎市多摩区栗谷</p>
-				<p>¥29,900</p>
+				<p>{{ pro_new.name }}</p>
+				<p>¥{{ pro_new.price }}</p>
 			</div>
-			<div class="detail-pro col-md-3">
-				<img src="{{ url_for('static', filename='images/site/noithat.jpeg') }}">
-				<p>神奈川県川崎市多摩区栗谷</p>
-				<p>¥29,900</p>
-			</div>
-			<div class="detail-pro col-md-3">
-				<img src="{{ url_for('static', filename='images/site/noithat.jpeg') }}">
-				<p>神奈川県川崎市多摩区栗谷</p>
-				<p>¥29,900</p>
-			</div>
-			<div class="detail-pro col-md-3">
-				<img src="{{ url_for('static', filename='images/site/noithat.jpeg') }}">
-				<p>神奈川県川崎市多摩区栗谷</p>
-				<p>¥29,900</p>
-			</div>			
+			{% endfor %}		
 		</div>
 	</div>
 	<div class="hot-pro">
@@ -153,4 +141,7 @@
 		</div>
 	</div>
 </section>
+{% endblock %}
+{% block footerjs %}
+<script src="{{ url_for('static', filename='js/site/scroll-slider.js') }}"></script>
 {% endblock %}

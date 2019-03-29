@@ -20,7 +20,7 @@ ul.nav-header {
 ul.nav-header li {
     display: inline-block;
     position: relative;
-    padding-right: 20px;
+    padding-right: 18px;
 }
 ul.nav-header li a {
     color: #009c95;

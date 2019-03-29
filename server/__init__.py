@@ -158,6 +158,11 @@ def create_app(test_config=None):
         parsed_t = dp.parse(str(seven_date_before))
         week_ago = parsed_t.isoformat()
         # {'date_created': {"$lte": arg}}
+        # {'date_created': {"$lte": arg}}
+        # {'date_created': 2 {"$lte": arg}}
+        # {'date_created': 3 {"$lte": arg}}
+        # {'date_created': 4 {"$lte": arg}}
+        # {'date_created': 5 {"$lte": arg}}
         pros_new = mongodb.products.find()
         if pros_new:
             context['pros_new'] = pros_new

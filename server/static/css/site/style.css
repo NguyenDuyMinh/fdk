@@ -117,6 +117,20 @@ section {
 	max-width: 217px;
 	padding:0px 2px 0px 2px;
 }
+#slider-pro .carousel-inner .carousel-item .img-pro p{
+  position: relative;
+  bottom: 49px;
+  background-color: #FFE4C4;
+  text-align: center;
+  min-height: 49px;
+  line-height: initial;
+  opacity: 0.5; 
+  font-size: 26px;
+  color: #2F4F4F;
+  padding-top: 10px;
+  border-radius: 5px 5px;
+  font-weight: bold;
+}
 #slider-pro .carousel-inner .carousel-item .img-pro .slider-pro-info {
   position: absolute;
   top: 70px;

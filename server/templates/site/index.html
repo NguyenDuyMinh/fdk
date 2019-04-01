@@ -51,26 +51,31 @@
 		    		<a href="#">
 		    			<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-1.jpeg') }}" alt="First slide">
 		    		</a>
+		    		<p>土地面積</p>
 		    	</div>
 		    	<div class="img-pro">
 		    		<a href="">
 		    			<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-2.jpeg') }}" alt="First slide">
 		    		</a>
+		    		<p>土地面積</p>
 		    	</div>
 		    	<div class="img-pro">
 		    		<a href="">
 		    			<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-1.jpeg') }}" alt="First slide">
 		    		</a>
+		    		<p>土地面積</p>
 		    	</div>
 		    	<div class="img-pro">
 		    		<a href="">
 		    			<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-2.jpeg') }}" alt="First slide">
 		    		</a>
+		    		<p>土地面積</p>
 		    	</div>
 		    	<div class="img-pro">
 		    		<a href="">
 		    			<img class="d-block w-101" src="{{ url_for('static', filename='images/site/slide-pro/slide-pro-1.jpeg') }}" alt="First slide">
 		    		</a>
+		    		<p>土地面積</p>
 		    	</div>
 		    </div>
 		</div>
@@ -81,10 +86,9 @@
 		<h2>最新の</h2>
 		<div class="content-pro row">
 			{% for pro_new in context['pros_new'] %}
-				{{ pro_new }}
 			<div class="detail-pro col-md-3">
-				<img src="{{ url_for('static', filename='images/site/noithat.jpeg') }}">
-				<p>{{ pro_new.name }}</p>
+				<img src="{{ url_for('static', filename='images/site/') }}{{ pro_new.image }}">
+				<a href=""><p>{{ pro_new.name }}</p></a>
 				<p>¥{{ pro_new.price }}</p>
 			</div>
 			{% endfor %}		

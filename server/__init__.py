@@ -146,19 +146,15 @@ def create_app(test_config=None):
             return redirect(url_for('.dashboard'))
         except:
             print("Can not remove")
-
+            
     # home
     @app.route('/home', methods=['GET'])
     def home():
         context = {}
         today = datetime.datetime.now()
-        parsed_t = dp.parse(str(today))
-        current_date = parsed_t.isoformat()
         seven_date_before = today - datetime.timedelta(days=7)
-        parsed_t = dp.parse(str(seven_date_before))
-        week_ago = parsed_t.isoformat()
-        # {'date_created': {"$lte": arg}}
-        pros_new = mongodb.products.find()
+        args = {'date_created': {"$lte": today, '$gte': seven_date_before }}
+        pros_new = mongodb.products.find(args).limit(8)
         if pros_new:
             context['pros_new'] = pros_new
 

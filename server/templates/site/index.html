@@ -88,7 +88,7 @@
 			{% for pro_new in context['pros_new'] %}
 			<div class="detail-pro col-md-3">
 				<img src="{{ url_for('static', filename='images/site/') }}{{ pro_new.image }}">
-				<a href=""><p>{{ pro_new.name }}</p></a>
+				<a href="{{ url_for('.detail', pro_id=pro_new._id) }}"><p>{{ pro_new.name }}</p></a>
 				<p>¥{{ pro_new.price }}</p>
 			</div>
 			{% endfor %}		

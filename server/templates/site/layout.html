@@ -14,18 +14,18 @@
     <title> | 物件探して、デザインして、リノベしよう｜クロニクル</title>
   </head>
   <body>
-    <div class="container h-100">
+    <div class="container h-100">      
         {% block body %}
         {% endblock %}
         <section id="navbar">
             <div class="row nav-top">
-                <div class="navigation col-md-6">
+                <div class="navigation col-md-7">
                     <ul class="nav-header">
                         <li><a href="{{ url_for('.home') }}"><img width="200px" src="{{ url_for('static', filename='images/site/logo.svg') }}"></a></li>
                         <li><a href="{{ url_for('.home') }}">ホーム</a></li>
                         <li><a href="{{ url_for('.introducation') }}">前書き</a></li>
                         <li><a href="{{ url_for('.product') }}">製品</a></li>
-                        <li><a href="{{ url_for('.contact') }}">接触</a></li>
+                        <li><a href="{{ url_for('.favorites') }}">お気に入り物件</a><span id="favorites"></span></li>
                         <li><a href="{{ url_for('.notice') }}">お知らせ</a></li>
                     </ul>
                 </div>
@@ -35,7 +35,7 @@
                         <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
                     </div>                
                 </div>
-                <div class="numberphone-top col-md-3">
+                <div class="numberphone-top col-md-2">
                     <a class="nav-link" href="tel:0120602423">
                         <div class="phone-img">
                             <img src="{{ url_for('static', filename='images/site/i_phone.svg') }}" width="50px" alt="" class="img-fluid"> 

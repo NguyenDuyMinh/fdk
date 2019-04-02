@@ -8,6 +8,7 @@ import os
 from bson import ObjectId
 import datetime
 import dateutil.parser as dp
+import requests
 
 def create_app(test_config=None):
     # create and configure the app
@@ -159,6 +160,25 @@ def create_app(test_config=None):
             context['pros_new'] = pros_new
 
         return render_template('site/index.html', context=context) 
+
+    # detail
+    @app.route('/detail/<pro_id>', methods=['GET'])
+    def detail(pro_id):
+        proId = set(ObjectId(x.strip()) for x in pro_id.split(',') if x.strip())
+        product = mongodb.products.find_one({'_id': {'$in': list(proId)}})
+        if product:
+            return render_template('site/product-detail.html', product=product)
+        raise(u'Product not found')
+
+    #favorites 
+    @app.route('/favorites')
+    def favorites():
+        proIds = []
+        for proId in request.cookies:
+            proIds.append(ObjectId(proId))
+            
+        pro_favs = mongodb.products.find({'_id': {'$in': proIds}})
+        return render_template('site/favorites.html', pro_favs=pro_favs)
 
     # introducation
     @app.route('/introducation', methods=['GET'])

@@ -70,7 +70,7 @@
 			  		<td><a href="#" data-toggle="modal" data-target="#myModal">{{ pro.name }}</a></td>
 			    	<td>{{ pro.price }} VND</td>
 			    	<td>{{ pro.type }}</td>
-			    	<td>{{ pro.description[:30] }} ...</td>
+			    	<td>{{ pro.description[:20] }} ...</td>
 			    	<td>
 			    		<a href="{{ url_for('.edit', pro_id=pro._id) }}"><span class="glyphicon glyphicon-edit"></span></a>
 			    		<a href="{{ url_for('.remove', pro_id=pro._id) }}"><span class="glyphicon glyphicon-remove"></span></a>

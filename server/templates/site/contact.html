@@ -1,0 +1,42 @@
+{% extends "site/layout.html"-%}
+{% block head %}
+<style type="text/css">
+	.content .form-group {
+		padding-left: 20px;
+	}
+	.content .form-group p {
+		padding-left: 10px;
+	}
+</style>
+{% endblock %}
+{% block body %}
+<section style="margin-top: 100px;">
+	<h1 style="text-align: center; color: blue;">接触</h1>
+	<div class="content	">
+		<div class="form-group row">
+			<label>お名前 : </label>
+			<p>Ahocol</p>
+		</div>
+		<div class="form-group row">
+			<label>メール : </label>
+			<p>ahocol@gmail.com</p>
+		</div>
+		<div class="form-group row">
+			<label>お電話番号 : </label>
+			<p>0120-602-423</p>
+		</div>
+		<div class="form-group row">
+			<label>所在地 : </label>
+			<p>東京都世田谷区三軒茶屋１丁目1-1</p>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="map row">
+		<div class="col col-12 col-sm-12">
+            <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.jp/maps?q=35.7224748,139.6593685+(プロスタイルヴィラ中野区沼袋4丁目)&amp;z=14&amp;iwloc=B&amp;output=embed"></iframe>
+            <p class="date_update clearfix">2019.02.18更新</p>
+        </div>
+	</div>
+</section>
+{% endblock %}

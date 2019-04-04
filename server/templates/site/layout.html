@@ -25,14 +25,23 @@
                         <li><a href="{{ url_for('.home') }}">ホーム</a></li>
                         <li><a href="{{ url_for('.introducation') }}">前書き</a></li>
                         <li><a href="{{ url_for('.product') }}">製品</a></li>
-                        <li><a href="{{ url_for('.favorites') }}">お気に入り物件</a><span id="favorites"></span></li>
-                        <li><a href="{{ url_for('.notice') }}">お知らせ</a></li>
+                        <li>
+                            <a href="{{ url_for('.favorites') }}">お気に入り物件</a>
+                            {% if request.cookies['favs_pro'] %}
+                            <span id="favorites" class="fa fa-heart"></span>
+                            {% else %}
+                            <span id="favorites"></span>
+                            {% endif %}
+                        </li>
+                        <li><a href="{{ url_for('.contact') }}">接触</a></li>
                     </ul>
                 </div>
                 <div class="serch-top col-md-3">
                     <div class="searchbar">
-                        <input class="search_input" type="text" name="" placeholder="検索する...">
-                        <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                        <form action="{{ url_for('.search') }}" method="GET" name="form1">
+                            <input class="search_input" type="text" name="key_word" placeholder="検索する...">
+                            <a href="javascript:document.form1.submit()" class="search_icon"><i class="fas fa-search"></i></a>
+                        </form>
                     </div>                
                 </div>
                 <div class="numberphone-top col-md-2">

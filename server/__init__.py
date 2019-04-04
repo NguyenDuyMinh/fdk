@@ -170,15 +170,28 @@ def create_app(test_config=None):
             return render_template('site/product-detail.html', product=product)
         raise(u'Product not found')
 
-    #favorites 
+    # favorites 
     @app.route('/favorites')
     def favorites():
         proIds = []
-        for proId in request.cookies:
-            proIds.append(ObjectId(proId))
-            
-        pro_favs = mongodb.products.find({'_id': {'$in': proIds}})
-        return render_template('site/favorites.html', pro_favs=pro_favs)
+        if request.cookies['favs_pro']:
+            favs_pro = request.cookies['favs_pro'].split(",")
+            for proId in favs_pro:
+                proIds.append(ObjectId(proId))
+
+            pro_favs = mongodb.products.find({'_id': {'$in': proIds}})
+            return render_template('site/favorites.html', pro_favs=pro_favs)
+        return render_template('site/favorites.html')
+
+    # search
+    @app.route('/search', methods=['GET'])
+    def search():
+        key = request.values.get('key_word', None)
+        pros = mongodb.products.find({'name': { '$regex' : key }})
+        if pros:
+            return render_template('site/product.html', pros=pros)
+        message = u'Not found products'
+        return render_template('site/product.html', msg=message)
 
     # introducation
     @app.route('/introducation', methods=['GET'])
@@ -194,9 +207,4 @@ def create_app(test_config=None):
     @app.route('/contact', methods=['GET'])
     def contact():
         return render_template('site/contact.html')
-
-    # product
-    @app.route('/notice', methods=['GET'])
-    def notice():
-        return render_template('site/notice.html')
     return app

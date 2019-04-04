@@ -3,8 +3,21 @@
 <section style="min-height: 1000px; margin-top: 100px;">
 	<h1 style="text-align: center; color: blue;">製品</h1>
 	<div class="content">
-		<h3>Propolife Vietnam</h3>
-		<p>coming soon....</p>
+		<div class="content-pro row">
+		{% if pros %}
+			{% for pro in pros %}
+				{% if pro %}
+			<div class="detail-pro col-md-3">
+				<img src="{{ url_for('static', filename='images/site/') }}{{ pro.image }}">
+				<a href="{{ url_for('.detail', pro_id=pro._id) }}"><p>{{ pro.name }}</p></a>
+				<p>¥{{ pro.price }}</p>
+			</div>
+				{% else %}	
+			<p>Products not found</p>
+				{% endif %}
+			{% endfor %}	
+		{% endif %}
+		</div>
 	</div>
 </section>
 {% endblock %}
